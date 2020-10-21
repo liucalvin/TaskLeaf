@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_agenda"
+            android:title="@string/agenda" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_current_tasks"
+            android:title="@string/current_tasks" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_calendar"
+            android:title="@string/calendar" />
+
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/action_settings"/>
+    </group>
+</menu>
