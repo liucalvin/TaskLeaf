@@ -1,6 +1,7 @@
 package com.example.tasktracker;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +10,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tasktracker.databinding.TaskListItemBinding;
+
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHolder> {
     
     private final LayoutInflater inflater;
     private List<Task> taskList;
+    private static final String TAG = TaskListAdapter.class.getSimpleName();
     
     public TaskListAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+        
     }
     
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = inflater.inflate(R.layout.task_list_item, parent, false);
-        return new ViewHolder(itemView);
+        return new ViewHolder(TaskListItemBinding.inflate(inflater));
     }
     
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (taskList != null) {
             Task current = taskList.get(position);
-            holder.title.setText(current.getTitle());
-            holder.dueDate.setText(current.getDueDate());
+            holder.binding.taskListItemDueDate.setText(current.getDueDate());
+            holder.binding.taskListItemTitle.setText(current.getTitle());
         } else {
             // data not ready yet
         }
@@ -50,12 +53,11 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     
     public static class ViewHolder extends RecyclerView.ViewHolder {
         
-        private final TextView title, dueDate;
-        
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.task_list_item_title);
-            dueDate = itemView.findViewById(R.id.task_list_item_due_date);
+        private final TaskListItemBinding binding;
+    
+        public ViewHolder(TaskListItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

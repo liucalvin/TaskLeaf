@@ -21,11 +21,10 @@ public class TaskViewModel extends AndroidViewModel {
         mTaskList = mRepository.getTaskList();
     }
     
-    // encapsulate query methods from ui
-    
     public void insert(Task task) {
         mRepository.insert(task);
     }
+    
     public void update(Task task) {
         mRepository.update(task);
     }
@@ -36,6 +35,14 @@ public class TaskViewModel extends AndroidViewModel {
     
     public LiveData<List<Task>> getTaskList() {
         return mTaskList;
+    }
+    
+    public int getTaskCount() {
+        if (mTaskList.getValue() != null) {
+            return mTaskList.getValue().size();
+        } else {
+            return 0;
+        }
     }
     
     public LiveData<List<Task>> getTasksFromCategory(String category) {

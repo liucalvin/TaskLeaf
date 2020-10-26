@@ -19,10 +19,12 @@ import com.example.tasktracker.R;
 import com.example.tasktracker.Task;
 import com.example.tasktracker.TaskListAdapter;
 import com.example.tasktracker.TaskViewModel;
+import com.example.tasktracker.databinding.FragmentTasksBinding;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 public class TasksFragment extends Fragment {
     
@@ -30,6 +32,7 @@ public class TasksFragment extends Fragment {
     private TextView tasksLeft;
     private RecyclerView taskRecyclerView;
     private TaskViewModel taskViewModel;
+    private FragmentTasksBinding binding;
     
     public TasksFragment() {
         // Required empty public constructor
@@ -44,13 +47,14 @@ public class TasksFragment extends Fragment {
     }
     
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tasks, container, false);
-        
-        tasksLeft = view.findViewById(R.id.fragment_tasks_left_to_complete);
-        taskRecyclerView = view.findViewById(R.id.fragment_tasks_recycler_view);
+        binding = FragmentTasksBinding.inflate(inflater, container, false);
+    
+        taskRecyclerView = binding.fragmentTasksRecyclerView;
+        tasksLeft = binding.fragmentTasksLeftToComplete;
+        View view = binding.getRoot();
         
         return view;
     }
@@ -58,11 +62,15 @@ public class TasksFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        tasksLeft.setText(
+                String.format(Locale.CANADA,
+                        getString(R.string.tasks_left_title),
+                        taskViewModel.getTaskCount()));
+        taskRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         final TaskListAdapter adapter = new TaskListAdapter(getActivity());
         taskRecyclerView.setAdapter(adapter);
-        taskRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        tasksLeft.setText(String.format(Locale.CANADA, getString(R.string.tasks_left_title), adapter.getItemCount()));
-    
+        
+        
         // observe data
         taskViewModel.getTaskList().observe(requireActivity(), new Observer<List<Task>>() {
             @Override
@@ -74,5 +82,11 @@ public class TasksFragment extends Fragment {
             }
         });
     
+    }
+    
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

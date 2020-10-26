@@ -19,4 +19,14 @@
             android:id="@+id/action_tasksFragment_to_addTaskFragment"
             app:destination="@id/addTaskFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/agendaFragment"
+        android:name="com.example.tasktracker.ui.AgendaFragment"
+        android:label="fragment_agenda"
+        tools:layout="@layout/fragment_agenda" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.tasktracker.ui.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>

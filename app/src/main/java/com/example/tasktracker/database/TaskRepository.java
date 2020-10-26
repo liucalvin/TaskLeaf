@@ -17,7 +17,7 @@ public class TaskRepository {
     private LiveData<List<Task>> mTaskList;
     private TaskDatabase mDatabase;
     
-    private TaskRepository(Application application) {
+    private TaskRepository(final Application application) {
         mDatabase = TaskDatabase.getInstance(application);
         mTaskDao = mDatabase.taskDao();
         mTaskList = mTaskDao.getAllTasks();
@@ -34,7 +34,7 @@ public class TaskRepository {
         return sInstance;
     }
     
-    // returns LiveData from Room, so the query is executed on separate thread
+    // returns LiveData from Room
     public LiveData<List<Task>> getTaskList() {
         return mTaskList;
     }
@@ -45,7 +45,7 @@ public class TaskRepository {
     
     // call other queries on non-UI (background) thread, using ExecutorService
     public void insert(Task task) {
-        // lambda to implement the run() method of Executor
+        // implement the run() method of Executor
         TaskDatabase.databaseExecutor.execute(() -> {
             mTaskDao.insert(task);
         });
