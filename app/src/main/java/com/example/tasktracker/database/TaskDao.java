@@ -14,10 +14,10 @@ import java.util.List;
 
 @Dao
 public interface TaskDao {
-
+    
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Task task);
-
+    
     @Delete
     void delete(Task task);
     

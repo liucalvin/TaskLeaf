@@ -16,16 +16,23 @@ public class Task implements Serializable {
     private String category;
     @ColumnInfo(name = "due_date")
     private String dueDate;
+    @ColumnInfo(name = "due_time")
+    private String dueTime;
     
-    public Task(String title, String description, String category, String dueDate) {
+    public Task(String title) {
         this.title = title;
-        this.description = description;
-        this.category = category;
-        this.dueDate = dueDate;
     }
     
-    public void setId(int id) {
-        this.id = id;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
     
     public int getId() {
@@ -46,5 +53,17 @@ public class Task implements Serializable {
     
     public String getDueDate() {
         return dueDate;
+    }
+    
+    public String getDueTime() {
+        return dueTime;
+    }
+    
+    public void setDueTime(String dueTime) {
+        this.dueTime = dueTime;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 }

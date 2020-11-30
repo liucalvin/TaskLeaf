@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         
         drawerLayout = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                        R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         
 /*        NavigationView sideNavView = findViewById(R.id.nav_view);
@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph())
-                .setOpenableLayout(drawerLayout)
-                .build();
+                        .setOpenableLayout(drawerLayout)
+                        .build();
         
         
         
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
  /*
         FloatingActionButton fab = findViewById(R.id.main_activity_fab);
         fab.setOnClickListener(v -> navController.navigate(R.id.addTaskFragment));*/
-    
+        
     }
     
     // activity callback methods for toggle
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_settings:
                 break;
-                
+            
         }
         // close drawer
         drawerLayout.closeDrawer(GravityCompat.START);

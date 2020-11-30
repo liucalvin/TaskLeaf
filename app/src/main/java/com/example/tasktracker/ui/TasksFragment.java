@@ -1,5 +1,6 @@
 package com.example.tasktracker.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,12 +55,11 @@ public class TasksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentTasksBinding.inflate(inflater, container, false);
-    
+        
         taskRecyclerView = binding.fragmentTasksRecyclerView;
         tasksLeft = binding.fragmentTasksLeftToComplete;
-        View view = binding.getRoot();
         
-        return view;
+        return binding.getRoot();
     }
     
     @Override
@@ -67,21 +70,22 @@ public class TasksFragment extends Fragment {
                         getString(R.string.tasks_left_title),
                         taskViewModel.getTaskCount()));
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        final TaskListAdapter adapter = new TaskListAdapter(getActivity());
+        final TaskListAdapter adapter = new TaskListAdapter();
         taskRecyclerView.setAdapter(adapter);
         
         
         // observe data
-        taskViewModel.getTaskList().observe(requireActivity(), new Observer<List<Task>>() {
-            @Override
-            public void onChanged(List<Task> taskList) {
-                // update cached copy of tasklist
-                adapter.setTaskList(taskList);
-                Log.d(TAG, "Task List changed!");
-                adapter.notifyDataSetChanged();
-            }
+        taskViewModel.getTaskList().observe(requireActivity(), taskList -> {
+            // update cached copy of tasklist
+            adapter.setTaskList(taskList);
+            Log.d(TAG, "Task List changed!");
+            adapter.notifyDataSetChanged();
         });
-    
+        binding.tasksFragmentAddTaskButton.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(TasksFragmentDirections.actionTasksFragmentToAddTaskFragment());
+        });
+        
     }
     
     @Override

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Task Tracker</string>
+    <string name="app_name">Task Leaf</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Task Tracker</string>
@@ -10,7 +10,6 @@
     <string name="agenda">Agenda</string>
     <string name="current_tasks">Current Tasks</string>
     <string name="calendar">Calendar</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tasks_left_to_complete_0">Tasks Left To Complete: 0</string>
     <string name="choose_due_time">Choose due time</string>
@@ -22,6 +21,7 @@
     <string name="add_task">Add task</string>
     <string name="task_title_empty_error">Please enter a task title</string>
     <string name="task_added">Task Added!</string>
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>

@@ -18,15 +18,12 @@
 
     <TextView
         android:id="@+id/task_list_item_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:text="Title loading..."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/task_list_item_due_date"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/task_list_item_check_box"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,9 +31,36 @@
         android:id="@+id/task_list_item_due_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/task_list_item_due"
+        app:layout_constraintTop_toBottomOf="@+id/task_list_item_title"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/task_list_item_due"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Due:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/task_list_item_check_box"
+        app:layout_constraintTop_toBottomOf="@+id/task_list_item_title" />
+
+    <TextView
+        android:id="@+id/task_list_item_due_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/task_list_item_due_date"
+        app:layout_constraintTop_toBottomOf="@+id/task_list_item_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

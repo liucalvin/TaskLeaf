@@ -14,7 +14,7 @@ import com.example.tasktracker.Task;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = Task.class, version = 1)
+@Database(entities = Task.class, version = 2)
 public abstract class TaskDatabase extends RoomDatabase {
     
     public abstract TaskDao taskDao();
@@ -36,7 +36,8 @@ public abstract class TaskDatabase extends RoomDatabase {
                 if (sInstance == null) {
                     sInstance = Room.databaseBuilder(context.getApplicationContext(),
                             TaskDatabase.class, DATABASE_NAME)
-                            .build();
+                                        .fallbackToDestructiveMigration()
+                                        .build();
                 }
             }
         }

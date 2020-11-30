@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#03DAC5</color>
+    <color name="colorAccent">#6200EE</color>
+    <color name="colorAccentDark">#3700B3</color>
 
-    <color name="drawer_center_colour">#009688</color>
-    <color name="drawer_end_colour">#00695C</color>
-    <color name="drawer_start_colour">#4DB6AC</color>
+    <!--    <color name="drawer_center_colour">#009688</color>
+        <color name="drawer_end_colour">#00695C</color>
+        <color name="drawer_start_colour">#4DB6AC</color>-->
 
+    <!--  <color name="drawer_center_colour">#009688</color>
+      <color name="drawer_end_colour">#00695C</color>
+      <color name="drawer_start_colour">#02B6A5</color>-->
+
+    <color name="drawer_center_colour">#7326E1</color>
+    <color name="drawer_end_colour">#4A19BA</color>
+    <color name="drawer_start_colour">#6040D3</color>
 
 </resources>
